@@ -30,8 +30,7 @@ async def favicon():
 async def ProductionExtract(ask: str):
 
     df = pd.read_excel("Data/vendedores.xlsx", index_col=False)
-    #dfString = df.to_string(index=False)
-    dfString = df.head(20).to_markdown()
+    dfString = df.to_string(index=False)
 
     conection = c.ConectionOnOpenAiExtractInformation(TOKEN_OPENAI,dfString,ask)
 
