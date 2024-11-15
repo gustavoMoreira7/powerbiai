@@ -19,11 +19,11 @@ class ConectionOnOpenAiExtractInformation():
                 model= model_engine,
                 prompt = texto,
                 max_tokens = 2900,
-                temperature = 0.3,
+                temperature = 0.4,
                 n = 1,
                 top_p = 0.2,
                 presence_penalty = 1.0,
-                frequency_penalty = 0.3
+                frequency_penalty = 0.4
 
             )
 
@@ -48,6 +48,8 @@ class ConectionOnOpenAiExtractInformation():
             a coluna 'ValorVendido' que contém o valor da venda, em dinheiro.
             a coluna 'DescontoAplicado' que contém o valor do desconto, em dinheiro.
             e a coluna 'JurosAplicado' que contém o % de juros aplicado na venda.
+
+            não faça somas ou aplicações, exceto se eu te pedir!
 
             com essas informações e o data frame:
 
