@@ -19,11 +19,11 @@ class ConectionOnOpenAiExtractInformation():
                 model= model_engine,
                 prompt = texto,
                 max_tokens = 2900,
-                temperature = 0.4,
+                temperature = 0.2,
                 n = 1,
-                top_p = 0.2,
-                presence_penalty = 1.0,
-                frequency_penalty = 0.4
+                top_p = 0.7,
+                presence_penalty = 0.5,
+                frequency_penalty = 0.2
 
             )
 
@@ -41,11 +41,19 @@ class ConectionOnOpenAiExtractInformation():
         data = self.data
         ask = self.ask
         
-        textoPadrao = f"""
+        prompt = f"""
+            Você é um analista de dados. Abaixo está uma tabela representada como texto, seguida de uma pergunta. Analise os dados cuidadosamente e forneça uma resposta clara e objetiva.
 
-            Baseado no dados: \n\n '{data}' \n\n{ask}"""
+            Dados da tabela:
+            {data}
+
+            Pergunta: {ask}
+
+            Resposta: 
+        """
+
         
-        resp = self.useOpenAi(textoPadrao)
+        resp = self.useOpenAi(prompt)
 
         return resp
     
