@@ -43,15 +43,7 @@ class ConectionOnOpenAiExtractInformation():
         
         textoPadrao = f"""
 
-            você tem a coluna 'nome', que contém o nome do usuario.
-            a coluna 'DataUltimaVenda' que contém a data de venda do vendedor.
-            a coluna 'ValorVendido' que contém o valor da venda, em dinheiro.
-            a coluna 'DescontoAplicado' que contém o valor do desconto, em dinheiro.
-            e a coluna 'JurosAplicado' que contém o % de juros aplicado na venda.
-
-            não faça somas ou aplicações, exceto se eu te pedir!
-
-            com essas informações e o data frame:
+            com base no data frame:
 
             '{data}'
 
