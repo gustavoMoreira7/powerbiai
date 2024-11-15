@@ -12,28 +12,23 @@ class ConectionOnOpenAiExtractInformation():
 
     def useOpenAi(self,texto):
 
-
-        response = openai.ChatCompletion.create(
-        model = "gpt-3.5-turbo",
-        messages = [
-            {'role':'user', 'content':texto}
-        ]
-    )
+        model_engine = 'gpt-3.5-turbo-instruct'
     
-        # response = openai.completions.create(
+        response = openai.completions.create(
 
-        #         model= model_engine,
-        #         prompt = texto,
-        #         max_tokens = 2900,
-        #         temperature = 0.4,
-        #         n = 1,
-        #         top_p = 0.2,
-        #         presence_penalty = 1.0,
-        #         frequency_penalty = 0.4
+                model= model_engine,
+                prompt = texto,
+                max_tokens = 2900,
+                temperature = 0.4,
+                n = 1,
+                top_p = 0.2,
+                presence_penalty = 1.0,
+                frequency_penalty = 0.4
 
-        #     )
+            )
 
-        resposta = response.choices[0].message.content
+        resposta = response.choices[0].text
+
         if resposta == '':
             resposta = 'Erro'
         else:
@@ -48,7 +43,7 @@ class ConectionOnOpenAiExtractInformation():
         
         textoPadrao = f"""
 
-            Aqui a tabela com dados:\n\n '{data}'\n\n{ask}"""
+            Baseado no dados: \n\n '{data}' \n\n{ask}"""
         
         resp = self.useOpenAi(textoPadrao)
 
